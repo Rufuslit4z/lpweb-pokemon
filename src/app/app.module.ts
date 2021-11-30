@@ -7,6 +7,8 @@ import { CarteComponent } from './component/carte/carte.component';
 import { DeckComponent } from './component/deck/deck.component';
 import { BoutiqueComponent } from './component/boutique/boutique.component';
 import { HeaderComponent } from './component/header/header.component';
+import {MatButtonModule} from '@angular/material/button';
+import { CardComponent } from './component/deck/card/card.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { HeaderComponent } from './component/header/header.component';
     CarteComponent,
     DeckComponent,
     BoutiqueComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     AppRoutingModule
   ],
   providers: [],

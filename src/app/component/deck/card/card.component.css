@@ -1,0 +1,25 @@
+div:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid grey;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    box-shadow: 10px 10px 5px grey;
+}
+
+div p {
+    margin: 0;
+}
+
+div > p {
+    text-align: center;
+}
+
+div > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
