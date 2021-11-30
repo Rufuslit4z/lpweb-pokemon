@@ -13,11 +13,9 @@
 </div>
 
 <div id="cards">
-    <app-card [card]="mewtwo"></app-card>
-    <app-card [card]="mewtwo"></app-card>
-    <app-card [card]="mewtwo"></app-card>
-    <app-card [card]="mewtwo"></app-card>
-    <app-card [card]="mewtwo"></app-card>
+    <div *ngFor="let test of table">
+        <app-card [card]="test"></app-card>
+    </div>
 </div>
 
 <!-- <div [ngStyle]="{'background-color': 'hsl(' + data.duration + ',50%,50%)'}">

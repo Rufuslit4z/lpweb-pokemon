@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Card } from 'src/app/app.component';
-
 
 @Component({
   selector: 'app-card',
@@ -9,11 +7,12 @@ import { Card } from 'src/app/app.component';
 })
 export class CardComponent implements OnInit {
   
-  @Input() card!: Card;
+  @Input() card!: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
