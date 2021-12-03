@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Card } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,21 @@ export class PokemonService {
   }
 
   async getRandomPokemon(){
-    console.log("JE PASSE PAR - getRandomPomeon()");
+    console.log("JE PASSE PAR - getRandomPokemon()");
     let table : any[] = [];
     for(let i = 0; i < 5 ; i++){
-      let lst$ = this.http.get<any[]>(`${this.url}/${Math.random() * 200}`, this.options);
+      let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
       let lst  = await lst$.toPromise();
       table.push(lst);
     }
     return table;
   }
+
+  // search(text: string){
+  //   return this.http.get<Array<searchResult>>(`https://lostin70s.com/lpwebfront/api/deezer/search?q=${text}`);
+  // }
+
+  // track(id: number){
+  //   return this.http.get(`https://lostin70s.com/lpwebfront/api/deezer/track/${id}`);
+  // }
 }

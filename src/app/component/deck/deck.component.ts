@@ -10,7 +10,8 @@ import { PokemonService } from 'src/app/service/pokemon.service';
 export class DeckComponent implements OnInit {
   bool : boolean = false;
   myPicture : string = "";
-  
+  data : any;
+
   onClick(){
     if(this.bool == false){
       this.bool = true;
@@ -22,10 +23,17 @@ export class DeckComponent implements OnInit {
   table : any[] = [];
 
   constructor(
-    private pokemonAPI : PokemonService
+    private pokemonAPI : PokemonService,
+    // private deezerService : PokemonService
     ) { }
 
   async ngOnInit() {
     this.table = await this.pokemonAPI.getRandomPokemon();
+    // this.data = this.deezerService.search("text").subscribe(data => {
+    //   let id = data[0].id;
+    //   this.deezerService.track(id).subscribe(data => {
+    //     let title = data;
+    //   });
+    // });
   }
 }
