@@ -1,0 +1,23 @@
+<div>
+    <p>{{ card.name | titlecase }}</p>
+    <p>{{ card.type | titlecase }}</p>
+
+    <img [src]="card.image">
+
+    <div>
+        <p>PV</p>
+        <p>{{ card.stats.hp }}</p>
+    </div>
+    <div>
+        <p>Défense</p>
+        <p>{{ card.stats.defense }}</p>
+    </div>
+    <div>
+        <p>Attaque</p>
+        <p>{{ card.stats.attack }}</p>
+    </div>
+    <div>
+        <p>Vitesse</p>
+        <p>{{ card.stats.speed }}</p>
+    </div>
+</div>

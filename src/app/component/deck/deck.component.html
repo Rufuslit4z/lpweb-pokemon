@@ -1,1 +1,29 @@
-<p>deck works!</p>
+<menu>
+    <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/langfr-420px-International_Pok%C3%A9mon_logo.svg.png" alt=""></li>
+    <li><a href="#">Deck</a></li>
+    <li><a href="#">Boutique</a></li>
+    <li>Solde : 93 PK</li>
+    <li><button mat-raised-button>Delete and logout</button></li>
+    <li><p>Bonjour Julien</p></li>
+</menu>
+
+<div>
+    <p>Min Attaque</p>
+    <p>70</p>
+</div>
+
+<div id="cards">
+    <div *ngFor="let test of table">
+        <app-card [card]="test"></app-card>
+    </div>
+</div>
+
+<!-- <div [ngStyle]="{'background-color': 'hsl(' + data.duration + ',50%,50%)'}">
+    <img [src]="bool ? data.artist.picture : data.album.cover" (mouseenter)="onClick()" (mouseleave)="onClick()">
+    <div>
+        <p>{{ data.title }}</p>
+        <p>{{ data.artist.name }}</p>
+    </div>
+</div> -->
+
+
