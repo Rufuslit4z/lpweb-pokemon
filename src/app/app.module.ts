@@ -6,17 +6,14 @@ import { AppComponent } from './app.component';
 import { DeckComponent } from './component/deck/deck.component';
 import { BoutiqueComponent } from './component/boutique/boutique.component';
 import { HeaderComponent } from './component/header/header.component';
-import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
-import { CardComponent } from './component/deck/card/card.component';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoutiqueComponent,
     HeaderComponent,
-    DeckComponent,
-    CardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
