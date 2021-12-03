@@ -7,13 +7,19 @@ import { DeckComponent } from './component/deck/deck.component';
 import { BoutiqueComponent } from './component/boutique/boutique.component';
 import { HeaderComponent } from './component/header/header.component';
 import { LoginComponent } from './component/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { CardComponent } from './component/deck/card/card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BoutiqueComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    DeckComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
