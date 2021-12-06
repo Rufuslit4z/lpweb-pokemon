@@ -1,1 +1,10 @@
-<p>boutique works!</p>
+<app-header></app-header>
+<div class="booster" (click)="openBooster"><img src="assets/images/booster.png" ></div>
+
+<div id="cards">
+    <div *ngFor="let test of table">
+        <app-card [card]="test"></app-card>
+    </div>
+</div>
+
+<!-- <img src="assets/images/booster.png" (click)=""> -->
