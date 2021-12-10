@@ -31,6 +31,17 @@ export class PokemonService {
     return table;
   }
 
+  async openBooster(){
+    console.log("JE PASSE PAR - getRandomPokemon()");
+    let table : any[] = [];
+    for(let i = 0; i < 10 ; i++){
+      let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
+      let lst  = await lst$.toPromise();
+      table.push(lst);
+    }
+    return table;
+  }
+
   // search(text: string){
   //   return this.http.get<Array<searchResult>>(`https://lostin70s.com/lpwebfront/api/deezer/search?q=${text}`);
   // }

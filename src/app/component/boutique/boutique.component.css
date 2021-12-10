@@ -1,0 +1,9 @@
+.booster {
+    text-align: center;
+}
+
+#cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

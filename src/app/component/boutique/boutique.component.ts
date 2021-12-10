@@ -1,3 +1,4 @@
+import { PokemonService } from './../../service/pokemon.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoutiqueComponent implements OnInit {
 
-  constructor() { }
+  constructor(private pokemonAPI: PokemonService) { }
+  table: any[]=[];
+
+  async openBooster() {
+    this.table = await this.pokemonAPI.openBooster();
+  }
 
   ngOnInit(): void {
   }
