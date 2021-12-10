@@ -2,9 +2,9 @@
 <div class="booster"><img src="assets/images/booster.png"  (click)="openBooster()"></div>
 
 <div id="cards">
-    <div *ngFor="let test of table">
+    <ng-container *ngFor="let test of table">
         <app-card [card]="test"></app-card>
-    </div>
+    </ng-container>
 </div>
 
 <!-- <img src="assets/images/booster.png" (click)=""> -->
