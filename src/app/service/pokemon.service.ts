@@ -1,6 +1,8 @@
+import { Card } from './../app.component';
+import { User } from './../interfaces/user';
+import { UserService } from 'src/app/service/user.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Card } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class PokemonService {
       }
     }
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private user : UserService) { }
 
   async getDeck(){
     this.getRandomPokemon();
@@ -35,13 +37,14 @@ export class PokemonService {
 
   async openBooster() {
     console.log("JE PASSE PAR - openBooster()");
-    let table: any[] = [];
+    let booster : Card[] = [];
     for (let i = 0; i < 10; i++) {
       let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
-      let lst = await lst$.toPromise();
-      table.push(lst);
+      let lst = await lst$.toPromise() as Card;
+      booster.push(lst);
+      // this.user.getUser()?.deck.push(lst);
     }
-    return table;
+    return booster;
   }
 
   // search(text: string){
