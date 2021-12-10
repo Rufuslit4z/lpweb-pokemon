@@ -7,14 +7,14 @@ import { Card } from '../app.component';
 })
 export class PokemonService {
 
-  url : string = "https://lostin70s.com/lpwebfront/api/pokemon";
+  url: string = "https://lostin70s.com/lpwebfront/api/pokemon";
 
-  options = 
-  {
-    headers: {
+  options =
+    {
+      headers: {
 
+      }
     }
-  }
 
   constructor(private http : HttpClient) { }
 
@@ -23,23 +23,23 @@ export class PokemonService {
 
   }
 
-  async getRandomPokemon(){
+  async getRandomPokemon() {
     console.log("JE PASSE PAR - getRandomPokemon()");
-    let table : any[] = [];
-    for(let i = 0; i < 5 ; i++){
+    let table: any[] = [];
+    for (let i = 0; i < 5; i++) {
       let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
-      let lst  = await lst$.toPromise();
+      let lst = await lst$.toPromise();
       table.push(lst);
     }
     return table;
   }
 
-  async openBooster(){
-    console.log("JE PASSE PAR - getRandomPokemon()");
-    let table : any[] = [];
-    for(let i = 0; i < 10 ; i++){
+  async openBooster() {
+    console.log("JE PASSE PAR - openBooster()");
+    let table: any[] = [];
+    for (let i = 0; i < 10; i++) {
       let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
-      let lst  = await lst$.toPromise();
+      let lst = await lst$.toPromise();
       table.push(lst);
     }
     return table;
