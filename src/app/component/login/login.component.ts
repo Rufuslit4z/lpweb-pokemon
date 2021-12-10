@@ -13,12 +13,9 @@ export class LoginComponent implements OnInit {
 
   name:string = "";
 
-  constructor(private userService: UserService,private router: Router) { 
+  constructor(private userService: UserService,private router: Router) {}
 
-  }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     if(this.name != null && this.name != undefined && this.name != ""){
