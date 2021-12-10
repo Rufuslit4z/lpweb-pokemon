@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         queryParams:{name:this.name}
       };
       this.router.navigate(["home/deck"], navigationExtras);
+      // console.log(this.name);
     }
 
     
