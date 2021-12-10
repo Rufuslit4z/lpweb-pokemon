@@ -7,9 +7,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  constructor() { }
+  constructor(private httpClient : HttpClient) { }
 
-  login(text:string){
-    return this.httpClient.get<Array<SearchResult>>('https://lostin70s.com/lpwebfront/api/deezer/search?q='+text);
+  login(userName:string):String{
+    this.httpClient.post<Token>('https://lostin70s.com/lpwebfront/api/poke-user/login', {name:userName}).subscribe(
+      data=>{
+        console.log(data.token);
+        return data.token;
+      }
+    );
+    
+    return '';
   }
+}
+
+export interface Token {
+  "token": string;
 }
