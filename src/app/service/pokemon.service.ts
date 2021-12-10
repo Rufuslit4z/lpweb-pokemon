@@ -20,7 +20,7 @@ export class PokemonService {
 
   async getDeck(){
     this.getRandomPokemon();
-    
+
   }
 
   async getRandomPokemon(){
@@ -33,8 +33,6 @@ export class PokemonService {
     }
     return table;
   }
-<<<<<<< HEAD
-=======
 
   async openBooster(){
     console.log("JE PASSE PAR - getRandomPokemon()");
@@ -54,6 +52,5 @@ export class PokemonService {
   // track(id: number){
   //   return this.http.get(`https://lostin70s.com/lpwebfront/api/deezer/track/${id}`);
   // }
->>>>>>> 973a8ef55b42bacdc85b5be14791c624c4480b2c
 }
 
