@@ -12,7 +12,7 @@ export class BoutiqueComponent implements OnInit {
   table: any[]=[];
 
   async openBooster() {
-    this.table = await this.pokemonAPI.getRandomPokemon();
+    this.table = await this.pokemonAPI.openBooster();
   }
 
   ngOnInit(): void {
