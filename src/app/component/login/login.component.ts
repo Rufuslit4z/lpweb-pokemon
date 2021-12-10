@@ -23,13 +23,7 @@ export class LoginComponent implements OnInit {
   login() {
     if(this.name != null && this.name != undefined && this.name != ""){
       this.userService.login(this.name!);
-      let navigationExtras: NavigationExtras = {
-        queryParams:{name:this.name}
-      };
-      this.router.navigate(["home/deck"], navigationExtras);
+      this.router.navigate(["home/deck"]);
     }
-
-    
   }
-
 }
