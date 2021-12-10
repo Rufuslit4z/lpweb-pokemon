@@ -1,13 +1,12 @@
 <app-header></app-header>
-
-<div>
-    <p>Min Attaque</p>
-    <p>70</p>
+<div class="form-group">
+    <label for="minattack" class="btn btn-primary">Min attack</label>
+    <input type="text" class="form-control" [formControl] id="minattack" placeholder="Attaque minimale">
 </div>
 
 <div id="cards">
-    <div *ngFor="let test of table">
-        <app-card [card]="test"></app-card>
+    <div *ngFor="let card of table">
+        <app-card [card]="card"></app-card>
     </div>
 </div>
 

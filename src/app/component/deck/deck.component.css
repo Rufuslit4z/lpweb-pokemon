@@ -1,5 +1,11 @@
+form > .form-group {
+    display: flex;
+    flex-direction: row;
+}
+
 #cards {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+

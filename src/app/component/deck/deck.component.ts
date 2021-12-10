@@ -24,16 +24,13 @@ export class DeckComponent implements OnInit {
 
   constructor(
     private pokemonAPI : PokemonService,
-    // private deezerService : PokemonService
     ) { }
 
   async ngOnInit() {
     this.table = await this.pokemonAPI.getRandomPokemon();
-    // this.data = this.deezerService.search("text").subscribe(data => {
-    //   let id = data[0].id;
-    //   this.deezerService.track(id).subscribe(data => {
-    //     let title = data;
-    //   });
-    // });
+  }
+
+  filterByAttack(){
+    this.table = this.table.filter(e => e.stats.attack);
   }
 }

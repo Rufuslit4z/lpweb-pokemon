@@ -16,8 +16,11 @@ export class PokemonService {
     }
   }
 
-  constructor(private http : HttpClient) { 
+  constructor(private http : HttpClient) { }
 
+  async getDeck(){
+    this.getRandomPokemon();
+    
   }
 
   async getRandomPokemon(){
@@ -30,12 +33,5 @@ export class PokemonService {
     }
     return table;
   }
-
-  // search(text: string){
-  //   return this.http.get<Array<searchResult>>(`https://lostin70s.com/lpwebfront/api/deezer/search?q=${text}`);
-  // }
-
-  // track(id: number){
-  //   return this.http.get(`https://lostin70s.com/lpwebfront/api/deezer/track/${id}`);
-  // }
 }
+
