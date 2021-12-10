@@ -7,8 +7,11 @@
             <h1>Bienvenue</h1> 
             <br> 
             <p>Login name</p>
-            <form>
-                <input type="text" placeholder="Name" class="form-control" id="usr">
+            <form (ngSubmit)="login()">
+                <input type="text" placeholder="Name" #nameValid="ngModel" [(ngModel)]="name" name="name" class="form-control" required>
+                <div [hidden]="nameValid.valid || nameValid.pristine"
+                    class="alert alert-danger">Veuillez renseigner votre nom
+                </div>
                 <br>
                 <button class="btn btn-warning text-white"><strong>GO !</strong> </button>
             </form>
