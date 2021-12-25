@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Token } from 'src/app/interfaces/token';
 import { UserService } from 'src/app/service/user.service';
@@ -11,7 +11,7 @@ import { UserService } from 'src/app/service/user.service';
 export class HeaderComponent implements OnInit {
 
   userName : string = '';
-  coins : number = 0;
+  @Input() coins : number = 0;
 
   constructor(
     private userAPI : UserService,

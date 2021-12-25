@@ -12,24 +12,13 @@ import { Router } from '@angular/router';
 export class BoutiqueComponent implements OnInit, OnDestroy {
 
   booster: Card[] = [];
-  
+  coins : number = 0;
+
   constructor(
     private pokemonAPI: PokemonService, 
     private userAPI : UserService,
     private router : Router
   ) { }
-
-  async openBooster() {
-    if(await this.userAPI.getCoins() > 0){
-      if(this.booster.length > 0) {
-        this.booster.forEach(async card => {
-          this.addCard(card);
-        });
-      }
-      this.booster = await this.pokemonAPI.openBooster();
-      await this.userAPI.setCoins(-10);
-    }
-  }
 
   ngOnInit() {
     if(this.userAPI.getUser() == undefined){
@@ -45,8 +34,22 @@ export class BoutiqueComponent implements OnInit, OnDestroy {
     }
   }
 
+  async openBooster() {
+    if((await this.userAPI.getCoins() - 10 >= 0)){
+      if(this.booster.length > 0) {
+        this.booster.forEach(async card => {
+          this.addCard(card);
+        });
+      }
+      this.booster = await this.pokemonAPI.openBooster();
+      await this.userAPI.setCoins(-10);
+      this.coins = await this.userAPI.getCoins();
+    }
+  }
+
   async removeCard(card : Card, event? : any){
     await this.userAPI.setCoins(1);
+    this.coins = await this.userAPI.getCoins();
     this.syncCard(card);
     event.target.parentNode.remove();
   }
