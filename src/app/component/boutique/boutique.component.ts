@@ -35,6 +35,17 @@ export class BoutiqueComponent implements OnInit {
     event.target.parentNode.remove();
   }
 
+  async addCard(event : any, card : Card){
+    await this.userAPI.setCard(card);
+    if(event.target.nodeName == "ARTICLE"){
+      event.target.parentNode.parentNode.remove();
+    } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
+      event.target.parentNode.parentNode.parentNode.remove();
+    } else if(event.target.nodeName == "P") {
+      event.target.parentNode.parentNode.parentNode.parentNode.remove();
+    }
+  }
+
   async putToUser(card : Card){
     (this.userAPI.getUser())?.deck.push(card);
     console.log(this.userAPI.getUser());

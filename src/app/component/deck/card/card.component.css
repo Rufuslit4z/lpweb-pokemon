@@ -1,4 +1,4 @@
-div:nth-child(1) {
+article:nth-child(1) {
     display: flex;
     flex-direction: column;
     width: 200px;
@@ -10,15 +10,15 @@ div:nth-child(1) {
     box-shadow: 10px 10px 5px grey;
 }
 
-div p {
+article p {
     margin: 0;
 }
 
-div > p {
+article > p {
     text-align: center;
 }
 
-div > div {
+article > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

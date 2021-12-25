@@ -1,6 +1,10 @@
-<div>
-    <p>{{ card.name | titlecase }}</p>
-    <p>{{ card.type | titlecase }}</p>
+<article>
+    <div>
+        <p>{{ card.name | titlecase }}</p>
+    </div>
+    <div>
+        <p>{{ card.type | titlecase }}</p>
+    </div>
 
     <img [src]="card.image">
 
@@ -20,4 +24,4 @@
         <p>Vitesse</p>
         <p>{{ card.stats.speed }}</p>
     </div>
-</div>
+</article>

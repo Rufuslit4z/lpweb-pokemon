@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Token } from '../interfaces/token';
 import { User, UserDelete } from '../interfaces/user';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { Card } from '../app.component';
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +66,11 @@ export class UserService {
 
   async setCoins(value : number){
     this.getUser()!.coins += value;
+    await this.putUser();
+  }
+
+  async setCard(card : Card){
+    this.getUser()!.deck.push(card);
     await this.putUser();
   }
 
