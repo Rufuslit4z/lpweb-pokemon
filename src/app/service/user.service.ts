@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Token } from '../interfaces/token';
-import { User, UserDelete } from '../interfaces/user';
+import { User } from '../interfaces/user';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
-import { Card } from '../app.component';
+import { Card } from '../interfaces/card';
 
 @Injectable({
   providedIn: 'root'
@@ -24,23 +24,18 @@ export class UserService {
   ) { }
   
   async getToken(userName : string, token : Token) : Promise<Token> {
-    console.log("--- getToken ---");
     let data$ = this.http.post<Token>(`${this.API_URL}/poke-user/login`, {name : userName});
     token = (await firstValueFrom(data$));
-    // console.log(token);
     return token;
   }
 
   async setToken(token : Token) : Promise<User> {
-    console.log("--- setToken ---");
     this.options.headers.token = token.token;
-    // console.log(this.options);
     let data$ = this.http.get<User>(`${this.API_URL}/poke-user/user`, this.options);
     return await firstValueFrom(data$);
   }
 
   async login(userName : string){
-    console.log("--- login ---");
     let token : Token = {
       token: ''
     };
@@ -48,23 +43,20 @@ export class UserService {
   }
 
   getUser() : User | undefined {
-    console.log("--- getUser ---");
     return this.user;
   }
 
   async putUser(){
-    console.log("--- setUser ---");
     let data$ = this.http.put<User>(`${this.API_URL}/poke-user`, this.getUser(), this.options);
     await firstValueFrom(data$);
   }
 
   async deleteUser(){
-    console.log("--- deleteUser ---");
-    let data$ = this.http.delete<UserDelete>(`${this.API_URL}/poke-user`, this.options);
+    let data$ = this.http.delete<User>(`${this.API_URL}/poke-user`, this.options);
     await firstValueFrom(data$);
   }
 
-  async getCoins(){
+  async getCoins() : Promise<number> {
     let data$ = this.http.get<User>(`${this.API_URL}/poke-user/user`, this.options);
     return (await firstValueFrom(data$)).coins;
   }
@@ -79,9 +71,12 @@ export class UserService {
     await this.putUser();
   }
 
-  getDeck(){
+  getDeck() : Card[] {
     return this.getUser()!.deck;
   }
+
+  // Au début
+
   // login(userName:string){
   //   this.http.post<Token>(this.API_URL = "https://lostin70s.com/lpwebfront/api/poke-user/"
   //   +'login', {name:userName}).subscribe(

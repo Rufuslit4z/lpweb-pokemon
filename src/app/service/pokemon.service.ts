@@ -1,9 +1,9 @@
-import { Card } from './../app.component';
 import { User } from './../interfaces/user';
 import { UserService } from 'src/app/service/user.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { Card } from '../interfaces/card';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class PokemonService {
   constructor(private http : HttpClient, private user : UserService) { }
 
   async openBooster() {
-    console.log("JE PASSE PAR - openBooster()");
     let booster : Card[] = [];
     for (let i = 0; i < 10; i++) {
       let random = Math.round(Math.random() * 200);

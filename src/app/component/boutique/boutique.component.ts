@@ -1,8 +1,8 @@
 import { UserService } from 'src/app/service/user.service';
 import { PokemonService } from './../../service/pokemon.service';
 import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { Card } from 'src/app/app.component';
 import { Router } from '@angular/router';
+import { Card } from 'src/app/interfaces/card';
 
 @Component({
   selector: 'app-boutique',
@@ -59,20 +59,7 @@ export class BoutiqueComponent implements OnInit, OnDestroy {
   }
 
   async addCard(card : Card, event? : any){
-    // if(event != undefined){
-    //   await this.userAPI.setCard(card);
-    //   this.syncCard(card);
-      // console.log(event.target.nodeName);
-      // if(event.target.nodeName == "ARTICLE"){
-      //   event.target.parentNode.parentNode.remove();
-      // } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
-      //   event.target.parentNode.parentNode.parentNode.remove();
-      // } else if(event.target.nodeName == "P") {
-      //   event.target.parentNode.parentNode.parentNode.parentNode.remove();
-      // }
-    // } else {
-      await this.userAPI.setCard(card);
-      this.syncCard(card);
-    // }
+    await this.userAPI.setCard(card);
+    this.syncCard(card);
   }
 }

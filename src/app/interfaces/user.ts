@@ -1,12 +1,7 @@
-import { Card } from './../app.component';
+import { Card } from "./card";
+
 export interface User {
     "name": string,
     "coins": number,
     "deck": Card[]
-}
-
-export interface UserDelete{
-    "n": number,
-    "deletedCount": number,
-    "ok": number
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from 'src/app/app.component';
+import { Card } from 'src/app/interfaces/card';
 import { User } from 'src/app/interfaces/user';
-import { PokemonService } from 'src/app/service/pokemon.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class DeckComponent implements OnInit {
   cards : Card[] = [];
 
   constructor(
-    private pokemonAPI : PokemonService,
     private userAPI : UserService,
     private router : Router
     ) { }
