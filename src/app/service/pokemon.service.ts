@@ -9,14 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PokemonService {
 
-  url: string = "https://lostin70s.com/lpwebfront/api/pokemon";
-
-  options =
-    {
-      headers: {
-
-      }
-    }
+  API_URL : string = "https://lostin70s.com/lpwebfront/api/pokemon";
 
   constructor(private http : HttpClient, private user : UserService) { }
 
@@ -24,7 +17,7 @@ export class PokemonService {
     console.log("JE PASSE PAR - openBooster()");
     let booster : Card[] = [];
     for (let i = 0; i < 10; i++) {
-      let lst$ = this.http.get<Card>(`${this.url}/${Math.random() * 200}`, this.options);
+      let lst$ = this.http.get<Card>(`${this.API_URL}/${Math.random() * 200}`);
       let lst = await lst$.toPromise() as Card;
       booster.push(lst);
     }

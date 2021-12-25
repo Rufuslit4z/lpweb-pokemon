@@ -1,6 +1,6 @@
 import { UserService } from 'src/app/service/user.service';
 import { PokemonService } from './../../service/pokemon.service';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Card } from 'src/app/app.component';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './boutique.component.html',
   styleUrls: ['./boutique.component.css']
 })
-export class BoutiqueComponent implements OnInit {
+export class BoutiqueComponent implements OnInit, OnDestroy {
 
   booster: Card[] = [];
   
@@ -30,24 +30,38 @@ export class BoutiqueComponent implements OnInit {
     }
   }
 
-  async removeCard(event : any){
-    await this.userAPI.setCoins(1);
-    event.target.parentNode.remove();
-  }
-
-  async addCard(event : any, card : Card){
-    await this.userAPI.setCard(card);
-    if(event.target.nodeName == "ARTICLE"){
-      event.target.parentNode.parentNode.remove();
-    } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
-      event.target.parentNode.parentNode.parentNode.remove();
-    } else if(event.target.nodeName == "P") {
-      event.target.parentNode.parentNode.parentNode.parentNode.remove();
+  ngOnDestroy() {
+    if(this.booster.length > 0) {
+      this.booster.forEach(card => {
+        this.addCard(card);
+      });
     }
   }
 
-  async putToUser(card : Card){
-    (this.userAPI.getUser())?.deck.push(card);
-    console.log(this.userAPI.getUser());
+  async removeCard(card : Card, event? : any){
+    await this.userAPI.setCoins(1);
+    this.syncCard(card);
+    event.target.parentNode.remove();
+  }
+
+  syncCard(card : Card){
+    this.booster.splice(this.booster.indexOf(card), this.booster.indexOf(card));
+  }
+
+  async addCard(card : Card, event? : any){
+    if(event != undefined){
+      await this.userAPI.setCard(card);
+      this.syncCard(card);
+      if(event.target.nodeName == "ARTICLE"){
+        event.target.parentNode.parentNode.remove();
+      } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
+        event.target.parentNode.parentNode.parentNode.remove();
+      } else if(event.target.nodeName == "P") {
+        event.target.parentNode.parentNode.parentNode.parentNode.remove();
+      }
+    } else {
+      await this.userAPI.setCard(card);
+      this.syncCard(card);
+    }
   }
 }

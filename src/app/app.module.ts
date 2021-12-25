@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CardComponent } from './component/deck/card/card.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon'; 
-
+import { MatFormFieldModule } from '@angular/material/form-field'; 
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule
   ],
   providers: [
   ],

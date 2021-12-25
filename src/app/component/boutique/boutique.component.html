@@ -4,8 +4,8 @@
 <div id="cards">
     <ng-container *ngFor="let card of booster">
         <div>
-            <mat-icon (click)="removeCard($event)">remove_circle</mat-icon>
-            <app-card [card]="card" (click)="addCard($event, card)"></app-card>
+            <mat-icon (click)="removeCard(card, $event)">remove_circle</mat-icon>
+            <app-card [card]="card" (click)="addCard(card, $event)"></app-card>
         </div>
     </ng-container>
 </div>

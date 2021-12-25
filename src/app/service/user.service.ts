@@ -74,6 +74,9 @@ export class UserService {
     await this.putUser();
   }
 
+  getDeck(){
+    return this.getUser()!.deck;
+  }
   // login(userName:string){
   //   this.http.post<Token>(this.API_URL = "https://lostin70s.com/lpwebfront/api/poke-user/"
   //   +'login', {name:userName}).subscribe(

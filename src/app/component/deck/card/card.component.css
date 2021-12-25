@@ -14,8 +14,8 @@ article p {
     margin: 0;
 }
 
-article > p {
-    text-align: center;
+article > div:nth-child(1), article > div:nth-child(2) {
+    align-self: center;
 }
 
 article > div {

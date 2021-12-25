@@ -1,9 +1,8 @@
-<ng-container></ng-container>
-
 <app-header></app-header>
-<div class="form-group">
-    <label for="minattack" class="btn btn-primary">Min attack</label>
-    <input type="text" class="form-control" id="minattack" placeholder="Attaque minimale">
+
+<div>
+    <label for="minattack" class="btn btn-primary">Attaque minimale</label>
+    <input type="number" class="form-control" id="minattack" placeholder="Attaque minimale" (input)="filterByAttack($event)">
 </div>
 
 <div id="cards">

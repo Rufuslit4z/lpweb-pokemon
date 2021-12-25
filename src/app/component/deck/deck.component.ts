@@ -24,10 +24,13 @@ export class DeckComponent implements OnInit {
   ngOnInit() {
     if(this.userAPI.getUser() == undefined){
       this.router.navigate(['/home/login']);
+    } else {
+      this.cards = this.userAPI.getDeck();
     }
   }
 
-  filterByAttack(){
-    this.cards = this.cards.filter(e => e.stats.attack);
+  filterByAttack(event : any){
+    this.cards = this.userAPI.getDeck();
+    this.cards = this.cards.filter(e => e.stats.attack >= event.target.value);
   }
 }
