@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { CardComponent } from './component/deck/card/card.component';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon'; 
 
 
 @NgModule({
@@ -20,14 +21,15 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     LoginComponent,
     DeckComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [
   ],

@@ -21,7 +21,7 @@ export class UserService {
   constructor(
     private http : HttpClient
   ) { }
-    
+  
   async getToken(userName : string, token : Token) : Promise<Token> {
     console.log("--- getToken ---");
     let data$ = this.http.post<Token>(`${this.API_URL}/poke-user/login`, {name : userName});
@@ -47,13 +47,25 @@ export class UserService {
   }
 
   getUser() : User | undefined {
+    console.log("--- getUser ---");
     return this.user;
+  }
+
+  async putUser(){
+    console.log("--- setUser ---");
+    let data$ = this.http.put<User>(`${this.API_URL}/poke-user`, this.getUser(), this.options);
+    await firstValueFrom(data$);
   }
 
   async deleteUser(){
     console.log("--- deleteUser ---");
     let data$ = this.http.delete<UserDelete>(`${this.API_URL}/poke-user`, this.options);
     await firstValueFrom(data$);
+  }
+
+  async setCoins(value : number){
+    this.getUser()!.coins += value;
+    await this.putUser();
   }
 
   // login(userName:string){

@@ -1,13 +1,11 @@
 <app-header></app-header>
-<div class="booster"><img src="assets/images/booster.png"  (click)="openBooster()"></div>
+<div class="booster"><img src="assets/images/booster.png" (click)="openBooster()"></div>
 
 <div id="cards">
     <ng-container *ngFor="let card of booster">
         <div>
-            <button>X</button>
-            <app-card [card]="card" (click)="putToUser(card)"></app-card>
+            <mat-icon (click)="removeCard($event)">remove_circle</mat-icon>
+            <app-card [card]="card"></app-card>
         </div>
     </ng-container>
 </div>
-
-<!-- <img src="assets/images/booster.png" (click)=""> -->

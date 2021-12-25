@@ -1,7 +1,8 @@
 import { UserService } from 'src/app/service/user.service';
 import { PokemonService } from './../../service/pokemon.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Card } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-boutique',
@@ -10,18 +11,31 @@ import { Card } from 'src/app/app.component';
 })
 export class BoutiqueComponent implements OnInit {
 
-  constructor(private pokemonAPI: PokemonService, private user : UserService) { }
   booster: Card[] = [];
+  
+  constructor(
+    private pokemonAPI: PokemonService, 
+    private userAPI : UserService,
+    private router : Router
+  ) { }
 
   async openBooster() {
     this.booster = await this.pokemonAPI.openBooster();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if(this.userAPI.getUser() == undefined){
+      this.router.navigate(['/home/login']);
+    }
+  }
+
+  async removeCard(event : any){
+    await this.userAPI.setCoins(1);
+    event.target.parentNode.remove();
   }
 
   async putToUser(card : Card){
-    // (await this.user.getUser())?.deck.push(card);
-    // console.log(this.user.getUser());
+    (this.userAPI.getUser())?.deck.push(card);
+    console.log(this.userAPI.getUser());
   }
 }
