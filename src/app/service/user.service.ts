@@ -64,13 +64,18 @@ export class UserService {
     await firstValueFrom(data$);
   }
 
+  async getCoins(){
+    let data$ = this.http.get<User>(`${this.API_URL}/poke-user/user`, this.options);
+    return (await firstValueFrom(data$)).coins;
+  }
+
   async setCoins(value : number){
     this.getUser()!.coins += value;
     await this.putUser();
   }
 
   async setCard(card : Card){
-    this.getUser()!.deck.push(card);
+    this.getUser()?.deck.push(card);
     await this.putUser();
   }
 

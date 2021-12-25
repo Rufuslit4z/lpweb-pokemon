@@ -3,6 +3,7 @@ import { User } from './../interfaces/user';
 import { UserService } from 'src/app/service/user.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,9 @@ export class PokemonService {
     console.log("JE PASSE PAR - openBooster()");
     let booster : Card[] = [];
     for (let i = 0; i < 10; i++) {
-      let lst$ = this.http.get<Card>(`${this.API_URL}/${Math.random() * 200}`);
-      let lst = await lst$.toPromise() as Card;
-      booster.push(lst);
+      let random = Math.round(Math.random() * 200);
+      let data$ = this.http.get<Card>(`${this.API_URL}/${random}`);
+      booster.push((await firstValueFrom(data$)));
     }
     return booster;
   }

@@ -20,8 +20,15 @@ export class BoutiqueComponent implements OnInit, OnDestroy {
   ) { }
 
   async openBooster() {
-    this.booster = await this.pokemonAPI.openBooster();
-    await this.userAPI.setCoins(-10);
+    if(await this.userAPI.getCoins() > 0){
+      if(this.booster.length > 0) {
+        this.booster.forEach(async card => {
+          this.addCard(card);
+        });
+      }
+      this.booster = await this.pokemonAPI.openBooster();
+      await this.userAPI.setCoins(-10);
+    }
   }
 
   ngOnInit() {
@@ -45,23 +52,24 @@ export class BoutiqueComponent implements OnInit, OnDestroy {
   }
 
   syncCard(card : Card){
-    this.booster.splice(this.booster.indexOf(card), this.booster.indexOf(card));
+    this.booster.splice(this.booster.indexOf(card), 1);
   }
 
   async addCard(card : Card, event? : any){
-    if(event != undefined){
+    // if(event != undefined){
+    //   await this.userAPI.setCard(card);
+    //   this.syncCard(card);
+      // console.log(event.target.nodeName);
+      // if(event.target.nodeName == "ARTICLE"){
+      //   event.target.parentNode.parentNode.remove();
+      // } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
+      //   event.target.parentNode.parentNode.parentNode.remove();
+      // } else if(event.target.nodeName == "P") {
+      //   event.target.parentNode.parentNode.parentNode.parentNode.remove();
+      // }
+    // } else {
       await this.userAPI.setCard(card);
       this.syncCard(card);
-      if(event.target.nodeName == "ARTICLE"){
-        event.target.parentNode.parentNode.remove();
-      } else if(event.target.nodeName == "DIV" || event.target.nodeName == "IMG"){
-        event.target.parentNode.parentNode.parentNode.remove();
-      } else if(event.target.nodeName == "P") {
-        event.target.parentNode.parentNode.parentNode.parentNode.remove();
-      }
-    } else {
-      await this.userAPI.setCard(card);
-      this.syncCard(card);
-    }
+    // }
   }
 }

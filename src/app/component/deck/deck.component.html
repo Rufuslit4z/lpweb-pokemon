@@ -5,9 +5,9 @@
     <input type="number" class="form-control" id="minattack" placeholder="Attaque minimale" (input)="filterByAttack($event)">
 </div>
 
-<div id="cards">
-    <div *ngFor="let card of cards">
+<mat-grid-list cols="5" rowHeight="450px">
+    <mat-grid-tile *ngFor="let card of cards">
         <app-card [card]="card"></app-card>
-    </div>
-</div>
+    </mat-grid-tile>
+</mat-grid-list>
 

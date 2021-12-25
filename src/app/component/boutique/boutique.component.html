@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div class="booster"><img src="assets/images/booster.png" (click)="openBooster()"></div>
 
-<div id="cards">
-    <ng-container *ngFor="let card of booster">
+<mat-grid-list cols="5" rowHeight="450px">
+    <mat-grid-tile *ngFor="let card of booster">
         <div>
             <mat-icon (click)="removeCard(card, $event)">remove_circle</mat-icon>
             <app-card [card]="card" (click)="addCard(card, $event)"></app-card>
         </div>
-    </ng-container>
-</div>
+    </mat-grid-tile>
+</mat-grid-list>
