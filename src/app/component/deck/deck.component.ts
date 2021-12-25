@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Card } from 'src/app/app.component';
+import { User } from 'src/app/interfaces/user';
 import { PokemonService } from 'src/app/service/pokemon.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-deck',
@@ -8,29 +12,22 @@ import { PokemonService } from 'src/app/service/pokemon.service';
 })
 
 export class DeckComponent implements OnInit {
-  bool : boolean = false;
-  myPicture : string = "";
-  data : any;
-
-  onClick(){
-    if(this.bool == false){
-      this.bool = true;
-    } else {
-      this.bool = false;
-    }
-  }
-
-  table : any[] = [];
+  user : User | null | undefined;
+  cards : Card[] = [];
 
   constructor(
     private pokemonAPI : PokemonService,
+    private userAPI : UserService,
+    private router : Router
     ) { }
 
-  async ngOnInit() {
-    this.table = await this.pokemonAPI.getRandomPokemon();
+  ngOnInit() {
+    if(this.userAPI.getUser() == undefined){
+      this.router.navigate(['/home/login']);
+    }
   }
 
   filterByAttack(){
-    this.table = this.table.filter(e => e.stats.attack);
+    this.cards = this.cards.filter(e => e.stats.attack);
   }
 }

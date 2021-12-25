@@ -1,3 +1,5 @@
+<ng-container></ng-container>
+
 <app-header></app-header>
 <div class="form-group">
     <label for="minattack" class="btn btn-primary">Min attack</label>
@@ -5,17 +7,8 @@
 </div>
 
 <div id="cards">
-    <div *ngFor="let card of table">
+    <div *ngFor="let card of cards">
         <app-card [card]="card"></app-card>
     </div>
 </div>
-
-<!-- <div [ngStyle]="{'background-color': 'hsl(' + data.duration + ',50%,50%)'}">
-    <img [src]="bool ? data.artist.picture : data.album.cover" (mouseenter)="onClick()" (mouseleave)="onClick()">
-    <div>
-        <p>{{ data.title }}</p>
-        <p>{{ data.artist.name }}</p>
-    </div>
-</div> -->
-
 

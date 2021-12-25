@@ -4,3 +4,9 @@ export interface User {
     "coins": number,
     "deck": Card[]
 }
+
+export interface UserDelete{
+    "n": number,
+    "deletedCount": number,
+    "ok": number
+}

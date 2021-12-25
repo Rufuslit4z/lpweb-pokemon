@@ -8,18 +8,14 @@ import { PokemonService } from './service/pokemon.service';
 })
 export class AppComponent {
   title = 'pokemon';
-  
-  constructor(private deezerService : PokemonService){ }
+  constructor(
+    
+  ){ }
   
   ngOnInit() : void {
     
   }
 }
-
-// export interface searchResult {
-//   id: number;
-//   title: string;
-// }
 
 export interface Card {
   _id: string,

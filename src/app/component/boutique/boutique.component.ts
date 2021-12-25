@@ -20,8 +20,8 @@ export class BoutiqueComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  putToUser(card : Card){
-    this.user.getUser()?.deck.push(card);
+  async putToUser(card : Card){
+    // (await this.user.getUser())?.deck.push(card);
     // console.log(this.user.getUser());
   }
 }

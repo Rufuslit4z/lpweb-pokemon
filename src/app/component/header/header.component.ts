@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Token } from 'src/app/interfaces/token';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  userName : string = '';
+  coins : number = 0;
 
-  ngOnInit(): void {
+  constructor(
+    private userAPI : UserService,
+    private router : Router
+  ) { }
+
+  ngOnInit() {
+    if(this.userAPI.getUser() != undefined) {
+      this.userName = this.userAPI.getUser()!.name;
+      this.coins = this.userAPI.getUser()!.coins;
+    }
   }
 
+  async toDelete(){
+    await this.userAPI.deleteUser();
+    this.router.navigate(['/home/login']);
+  }
 }
