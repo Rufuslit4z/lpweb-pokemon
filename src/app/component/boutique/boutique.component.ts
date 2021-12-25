@@ -21,6 +21,7 @@ export class BoutiqueComponent implements OnInit {
 
   async openBooster() {
     this.booster = await this.pokemonAPI.openBooster();
+    await this.userAPI.setCoins(-10);
   }
 
   ngOnInit() {
