@@ -1,9 +1,9 @@
 <app-header [coins]="coins"></app-header>
-<div class="booster"><img src="assets/images/booster.png" height="50px" (click)="openBooster()"></div>
+<div class="booster"><img src="assets/images/booster.png"(click)="openBooster()"></div>
 
 <mat-grid-list cols="5" rowHeight="450px">
     <mat-grid-tile *ngFor="let card of booster">
-        <div>
+        <div *ngIf="card">
             <mat-icon (click)="removeCard(card, $event)">remove_circle</mat-icon>
             <app-card [card]="card" (click)="addCard(card, $event)"></app-card>
         </div>

@@ -1,8 +1,10 @@
 <menu>
-    <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/langfr-420px-International_Pok%C3%A9mon_logo.svg.png" alt=""></li>
-    <li><a routerLink="/home/deck">Deck</a></li>
-    <li><a routerLink="/home/boutique">Boutique</a></li>
-    <li>Solde : {{ coins }} PK</li>
-    <li><button mat-raised-button (click)="toDelete()">Delete and logout</button></li>
-    <li><p>Bonjour {{ userName }}</p></li>
+    <mat-grid-list cols="6" rowHeight="200px">
+        <mat-grid-tile><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/langfr-420px-International_Pok%C3%A9mon_logo.svg.png" height="75px" alt=""></mat-grid-tile>
+        <mat-grid-tile><a routerLink="/home/deck">Deck</a></mat-grid-tile>
+        <mat-grid-tile><a routerLink="/home/boutique">Boutique</a></mat-grid-tile>
+        <mat-grid-tile>Solde : {{ coins }} PK</mat-grid-tile>
+        <mat-grid-tile><button mat-raised-button (click)="toDelete()">Delete and logout</button></mat-grid-tile>
+        <mat-grid-tile><p>Bonjour {{ userName }}</p></mat-grid-tile>
+    </mat-grid-list>
 </menu>

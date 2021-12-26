@@ -28,19 +28,21 @@ export class BoutiqueComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if(this.booster.length > 0) {
-      this.booster.forEach(card => {
-        this.addCard(card);
-      });
+      this.userAPI.setCards(this.booster);
+      // this.booster.forEach(card => {
+      //   this.addCard(card);
+      // });
     }
   }
 
   async openBooster() {
     if((await this.userAPI.getCoins() - 10 >= 0)){
       if(this.booster.length > 0) {
-        this.booster.forEach(async card => {
-          this.addCard(card);
-        });
-      }
+        this.userAPI.setCards(this.booster);
+        // this.booster.forEach(async card => {
+          //   this.addCard(card);
+          // });
+        }
       this.booster = await this.pokemonAPI.openBooster();
       await this.userAPI.setCoins(-10);
       this.coins = await this.userAPI.getCoins();

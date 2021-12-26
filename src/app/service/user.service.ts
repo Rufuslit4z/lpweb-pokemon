@@ -71,6 +71,13 @@ export class UserService {
     await this.putUser();
   }
 
+  async setCards(cards : Card[]){
+    cards.forEach(e => {
+      this.getUser()?.deck.push(e);
+    })
+    await this.putUser();
+  }
+
   getDeck() : Card[] {
     return this.getUser()!.deck;
   }
